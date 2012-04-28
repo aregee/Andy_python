@@ -1,3 +1,5 @@
+#A Sample Script from Sl4A ,demonstrating the full screen UI with Python :)
+
 import android
 droid=android.Android()
 
