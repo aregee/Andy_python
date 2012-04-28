@@ -21,6 +21,8 @@ def getlist():
     return result["item"]
   else:
     return -1
+#Functions to change extension of the most common media files
+#Modify or add other formats as per your need :)
 def hide():
         for fi in glob.glob("*.png"):
 
@@ -89,14 +91,14 @@ def Vrestore():
 
 
 
-#Choose List
+
 listtype=getlist()
 if listtype<0:
   print "No item chosen"
   sys.exit()
 
 if listtype==0:
-  #droid.dialogSetItems(options)
+  
   hide()
 elif listtype==1:
   
@@ -110,12 +112,12 @@ droid.dialogSetPositiveButtonText("OK")
 droid.dialogSetNegativeButtonText("Cancel")
 droid.dialogShow()
 result=droid.dialogGetResponse().result
-# droid.dialogDismiss() # In most modes this is not needed.
+
 if result==None:
   print "Time out"
 elif result.has_key("item"):
   item=result["item"];
-  print "Chosen item=",item,"=",options[item]
+  print "Chosen item=",item
 else:
   print "Result=",result
   print "Selected=",droid.dialogGetSelectedItems().result
