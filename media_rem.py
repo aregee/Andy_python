@@ -5,11 +5,33 @@
 # A Script for ASE(sl4a) to maniupluate your media file extensions to hide them from the gallery :)
 # Feel free to make changes and improve functionality :)
 #
+
+#
+#!/usr/bin/env python2.7
+# -*- coding: utf-8 -*- 
+#_author_:Aregee:rahul.nbg@gmail.com
+# A Script for ASE(sl4a) to maniupluate your media file extensions to hide them from the gallery :)
+# Feel free to make changes and improve functionality :)
+#
 import android,sys,glob,os
+from os import chdir
 droid=android.Android()
+
+b= '/sdcard/' 
+chdir(b)
+print os.path.basename(os.getcwd())
+
+
+input = droid.dialogGetInput('Enter The Folder To Change Extention Type').result
+
+variable = os.path.join(os.getcwd(),input)
+os.chdir(variable)
+message = "Current Directory is %s" % os.getcwd()
+droid.makeToast(message)
 
 #Choose which list type you want.
 def getlist():
+  
   droid.dialogCreateAlert("What Do Want To Do !")
   droid.dialogSetItems(["Hide_images","Restore_images","Hide_videos","Restore_Videos"])
   droid.dialogSetPositiveButtonText("Okay")
@@ -21,8 +43,16 @@ def getlist():
     return result["item"]
   else:
     return -1
-#Functions to change extension of the most common media files
-#Modify or add other formats as per your need :)
+def changed():
+
+  droid.dialogCreateAlert("Files Changed")
+  changed =  os.listdir(os.getcwd())
+  droid.dialogSetItems(changed)
+  droid.dialogShow()
+  droid.dialogDismiss()
+
+
+
 def hide():
         for fi in glob.glob("*.png"):
 
@@ -91,7 +121,7 @@ def Vrestore():
 
 
 
-
+#Choose List
 listtype=getlist()
 if listtype<0:
   print "No item chosen"
@@ -100,6 +130,7 @@ if listtype<0:
 if listtype==0:
   
   hide()
+  #changed()
 elif listtype==1:
   
   restore() 
@@ -110,16 +141,10 @@ elif listtype==3:
   Vrestore()
 droid.dialogSetPositiveButtonText("OK")
 droid.dialogSetNegativeButtonText("Cancel")
-droid.dialogShow()
 result=droid.dialogGetResponse().result
 
-if result==None:
-  print "Time out"
-elif result.has_key("item"):
-  item=result["item"];
-  print "Chosen item=",item
-else:
-  print "Result=",result
-  print "Selected=",droid.dialogGetSelectedItems().result
-print "Done"
+# droid.dialogDismiss() # In most modes this is not needed.
+
+b=os.getcwd()
+droid.makeToast(b)
 
