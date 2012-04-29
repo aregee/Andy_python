@@ -15,7 +15,7 @@ chdir(b)
 print os.path.basename(os.getcwd())
 
 
-input = droid.dialogGetInput('Enter The Folder To Change Extention Type').result
+input = droid.dialogGetInput('Enter The Folder To Change Extention Type of all the files ').result
 
 variable = os.path.join(os.getcwd(),input)
 os.chdir(variable)
