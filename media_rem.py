@@ -6,13 +6,6 @@
 # Feel free to make changes and improve functionality :)
 #
 
-#
-#!/usr/bin/env python2.7
-# -*- coding: utf-8 -*- 
-#_author_:Aregee:rahul.nbg@gmail.com
-# A Script for ASE(sl4a) to maniupluate your media file extensions to hide them from the gallery :)
-# Feel free to make changes and improve functionality :)
-#
 import android,sys,glob,os
 from os import chdir
 droid=android.Android()
