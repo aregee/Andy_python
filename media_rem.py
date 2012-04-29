@@ -5,7 +5,6 @@
 # A Script for ASE(sl4a) to maniupluate your media file extensions to hide them from the gallery :)
 # Feel free to make changes and improve functionality :)
 #
-
 import android,sys,glob,os
 from os import chdir
 droid=android.Android()
@@ -15,7 +14,7 @@ chdir(b)
 print os.path.basename(os.getcwd())
 
 
-input = droid.dialogGetInput('Enter The Folder To Change Extention Type of all the files ').result
+input = droid.dialogGetInput('Give it to me babe').result
 
 variable = os.path.join(os.getcwd(),input)
 os.chdir(variable)
@@ -23,6 +22,7 @@ message = "Current Directory is %s" % os.getcwd()
 droid.makeToast(message)
 
 #Choose which list type you want.
+
 def getlist():
   
   droid.dialogCreateAlert("What Do Want To Do !")
@@ -36,13 +36,6 @@ def getlist():
     return result["item"]
   else:
     return -1
-def changed():
-
-  droid.dialogCreateAlert("Files Changed")
-  changed =  os.listdir(os.getcwd())
-  droid.dialogSetItems(changed)
-  droid.dialogShow()
-  droid.dialogDismiss()
 
 
 
@@ -141,3 +134,10 @@ result=droid.dialogGetResponse().result
 b=os.getcwd()
 droid.makeToast(b)
 
+some_variable = os.listdir(os.getcwd())
+droid.dialogCreateAlert("Changed Files")
+droid.dialogSetItems(some_variable)
+droid.dialogShow()
+#droid.dialogDismiss()
+#uri = 'file://' + b
+#droid.startActivity('android.intent.action.VIEW',uri)
