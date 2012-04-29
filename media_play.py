@@ -46,10 +46,19 @@ def spinner():#Spinner PRogress
       time.sleep(2)
       droid.dialogDismiss()
       return True
+      
+def spinner_p():#Spinner PRogress
+      title = 'Memories'
+      message = 'Best Thing Ever Happned To Me...'
+      droid.dialogCreateSpinnerProgress(title, message)
+      droid.dialogShow()
+      time.sleep(2)
+      droid.dialogDismiss()
+      return True
 def what_i_feel():#Create an Alert and Provide Option To Select
       
       droid.dialogCreateAlert("I love you!")
-      droid.dialogSetItems(["This is All I want to Tell You "])
+      droid.dialogSetItems(["This is All I want to Say "])#Plays a Selected mp3 when tapped
       droid.dialogShow()
       #vibro = viber()
       result = droid.dialogGetResponse().result
@@ -70,7 +79,7 @@ else:
       show =  what_i_feel()#Calls the Function to Display your Personal Message
       
       if show ==0:
-        test=spinner()#calls the spinner progress
+        test=spinner_p()#calls the spinner progress
         url ="file:///sdcard/My_app_files/life.jpg"#Open An Image from the given location 
         mime = "image/jpeg"
 
